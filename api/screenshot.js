@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const puppeteer = require('puppeteer');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+const delay = require('delay');
+const axios = require('axios');
+const { convert } = require('html-to-text');
 
 /**
  * GET product list.
