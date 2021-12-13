@@ -12,7 +12,7 @@ const { convert } = require('html-to-text');
  * @return product list | empty.
  */
 router.get("/", async (req, res) => {
-  try {
+//   try {
     const browser = await puppeteer.launch(
         {
             headless: false,
@@ -46,10 +46,10 @@ router.get("/", async (req, res) => {
         status: 200,
         message: "Get data has successfully",
       });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).send("Server error");
-  }
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).send("Server error23123123");
+//   }
 });
 
 module.exports = router;
