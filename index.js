@@ -7,6 +7,7 @@ const express = require('express');
 const { Cluster } = require('puppeteer-cluster');
 const { Worker, isMainThread } = require('worker_threads');
 const product = require("./api/product");
+const screenshop2 = require("./api/screenshot");
 
 const app = express();
 app.use(express.json({ extended: false }));
@@ -377,6 +378,8 @@ app.get('/screenshot', async (req, res) => {
 })
 
 app.use("/api/product", product);
+
+app.use("/screenshot2", screenshop2);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
