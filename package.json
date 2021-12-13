@@ -1,7 +1,8 @@
 {
-  "name": "create-react-app",
+  "name": "server-express",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "dependencies": {
     "antd": "^4.17.2",
     "axios": "^0.24.0",
@@ -29,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "node src/server.js"
+    "start": "node index.js"
   },
   "browserslist": [
     ">0.2%",
