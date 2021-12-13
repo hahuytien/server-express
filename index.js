@@ -6,8 +6,10 @@ const { convert } = require('html-to-text');
 const express = require('express');
 const { Cluster } = require('puppeteer-cluster');
 const { Worker, isMainThread } = require('worker_threads');
+const product = require("./api/product");
 
 const app = express();
+app.use(express.json({ extended: false }));
 
 function getUrl(acountId) {
     return 'https://www.facebook.com/payments/risk/preauth/?ad_account_id=' + acountId + '&entrypoint=AYMTAdAccountUnrestrictLinkGenerator';
@@ -374,4 +376,7 @@ app.get('/screenshot', async (req, res) => {
     await browser.close();
 })
 
-app.listen(5000);
+app.use("/api/product", product);
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
