@@ -7,7 +7,7 @@ const puppeteer = require('puppeteer');
  *
  * @return product list | empty.
  */
-router.get("/screenshot", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const browser = await puppeteer.launch(
         {
@@ -27,17 +27,21 @@ router.get("/screenshot", async (req, res) => {
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36');
     await page.setJavaScriptEnabled(true);
 
-    const screenshotBuffer = await page.screenshot();
+    // const screenshotBuffer = await page.screenshot();
 
-    // Respond with the image
-    res.writeHead(200, {
-        'Content-Type': 'image/png',
-        'Content-Length': screenshotBuffer.length
-    });
-    res.end(screenshotBuffer);
+    // // Respond with the image
+    // res.writeHead(200, {
+    //     'Content-Type': 'image/png',
+    //     'Content-Length': screenshotBuffer.length
+    // });
+    // res.end(screenshotBuffer);
 
-    await delay(1000);
-    await browser.close();
+    // await delay(1000);
+    // await browser.close();
+    res.json({
+        status: 200,
+        message: "Get data has successfully",
+      });
   } catch (error) {
     console.error(error);
     return res.status(500).send("Server error");

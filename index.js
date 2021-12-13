@@ -379,7 +379,7 @@ app.get('/screenshot', async (req, res) => {
 
 app.use("/api/product", product);
 
-app.use("/screenshot2", screenshop2);
+app.use("/api/screenshot2", screenshop2);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
