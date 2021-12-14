@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 //   try {
     const browser = await puppeteer.launch(
         {
-            headless: false,
+            headless: true,
             args: ['--no-sandbox']
         }
     );
