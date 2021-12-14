@@ -1,12 +1,20 @@
 const express = require('express'); // Adding Express
 const app = express(); // Initializing Express
-const puppeteer = require('puppeteer'); // Adding Puppeteer
+// const puppeteer = require('puppeteer'); // Adding Puppeteer
+import chromium from 'chrome-aws-lambda';
+
 
 // Wrapping the Puppeteer browser logic in a GET request
 app.get('/', function(req, res) {
 
     // Launching the Puppeteer controlled headless browser and navigate to the Digimon website
-    puppeteer.launch().then(async function(browser) {
+    chromium.puppeteer.launch({
+        args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath,
+        headless: true,
+        ignoreHTTPSErrors: true,
+      }).then(async function(browser) {
         const page = await browser.newPage();
         await page.goto('http://digidb.io/digimon-list/');
 
