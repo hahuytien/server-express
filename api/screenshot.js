@@ -2,16 +2,29 @@ const express = require('express'); // Adding Express
 const app = express(); // Initializing Express
 // const puppeteer = require('puppeteer'); // Adding Puppeteer
 const chromium = require('chrome-aws-lambda');
+const PCR = require("puppeteer-chromium-resolver");
+
+const option = {
+    revision: "",
+    detectionPath: "",
+    folderName: ".chromium-browser-snapshots",
+    defaultHosts: ["https://storage.googleapis.com", "https://npm.taobao.org/mirrors"],
+    hosts: [],
+    cacheRevisions: 2,
+    retry: 3,
+    silent: false
+};
 
 
 // Wrapping the Puppeteer browser logic in a GET request
 app.get('/', function(req, res) {
 
     // Launching the Puppeteer controlled headless browser and navigate to the Digimon website
+    const stats = await PCR(option);
     chromium.puppeteer.launch({
         args: chromium.args,
         defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath,
+        executablePath: stats.executablePath,
         headless: chromium.headless,
         ignoreHTTPSErrors: true,
       }).then(async function(browser) {
