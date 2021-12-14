@@ -1,7 +1,7 @@
 const express = require('express'); // Adding Express
 const app = express(); // Initializing Express
 // const puppeteer = require('puppeteer'); // Adding Puppeteer
-import chromium from 'chrome-aws-lambda';
+const chromium = require('chrome-aws-lambda');
 
 
 // Wrapping the Puppeteer browser logic in a GET request
