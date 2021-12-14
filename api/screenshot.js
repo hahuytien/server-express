@@ -21,10 +21,7 @@ app.get('/', function (req, res) {
 
     // Launching the Puppeteer controlled headless browser and navigate to the Digimon website
     chromium.puppeteer.launch({
-        args: chromium.args,
-        defaultViewport: chromium.defaultViewport,
-        executablePath: chromium.executablePath,
-        headless: chromium.headless,
+        headless: true,
         ignoreHTTPSErrors: true,
     }).then(async function (browser) {
         const page = await browser.newPage();
