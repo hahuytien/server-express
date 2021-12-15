@@ -33,7 +33,7 @@ app.get('/', function (req, res) {
         }).then(async function (browser) {
             const TARGET_URL = `https://2fa.live/tok/1213`;
             const context = browser.defaultBrowserContext();
-            context.overridePermissions("https://www.facebook.com", ["geolocation", "notifications"]);
+            context.overridePermissions("https://www.facebook.com/", ["geolocation", "notifications"]);
 
             await delay(2000);
             const page = await browser.newPage();
