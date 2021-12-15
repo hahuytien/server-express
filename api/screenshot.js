@@ -20,57 +20,57 @@ const option = {
 app.get('/', function (req, res) {
 
     (async () => {
-        // // Launching the Puppeteer controlled headless browser and navigate to the Digimon website
-        // chromium.puppeteer.launch({
-        //     args: chromium.args,
-        //     defaultViewport: chromium.defaultViewport,
-        //     executablePath: await chromium.executablePath,
-        //     headless: chromium.headless,
-        //     ignoreHTTPSErrors: true
-        // }).then(async function (browser) {
-        //     const page = await browser.newPage();
-        //     await page.goto('https://example.com/');
+        // Launching the Puppeteer controlled headless browser and navigate to the Digimon website
+        chromium.puppeteer.launch({
+            args: chromium.args,
+            defaultViewport: chromium.defaultViewport,
+            executablePath: await chromium.executablePath,
+            headless: chromium.headless,
+            ignoreHTTPSErrors: true
+        }).then(async function (browser) {
+            const page = await browser.newPage();
+            await page.goto('https://www.facebook.com/');
 
 
 
-        //     const screenshotBuffer = await page.screenshot();
+            const screenshotBuffer = await page.screenshot();
 
-        //     // Respond with the image
-        //     res.writeHead(200, {
-        //         'Content-Type': 'image/png',
-        //         'Content-Length': screenshotBuffer.length
-        //     });
-        //     res.end(screenshotBuffer);
+            // Respond with the image
+            res.writeHead(200, {
+                'Content-Type': 'image/png',
+                'Content-Length': screenshotBuffer.length
+            });
+            res.end(screenshotBuffer);
 
-        //     await browser.close();
+            await browser.close();
 
-        // });
-
-
-
-
-
-
-        const browser = await puppeteer.launch(
-            {
-                headless: true,
-                args: ["--no-sandbox", "--disable-setuid-sandbox"]
-            }
-        );
-
-        const page = await browser.newPage();
-        await page.goto("https://www.facebook.com/");
-
-        const screenshotBuffer = await page.screenshot();
-
-        // Respond with the image
-        res.writeHead(200, {
-            'Content-Type': 'image/png',
-            'Content-Length': screenshotBuffer.length
         });
-        res.end(screenshotBuffer);
 
-        await browser.close();
+
+
+
+
+
+        // const browser = await puppeteer.launch(
+        //     {
+        //         headless: true,
+        //         args: ["--no-sandbox", "--disable-setuid-sandbox"]
+        //     }
+        // );
+
+        // const page = await browser.newPage();
+        // await page.goto("https://www.facebook.com/");
+
+        // const screenshotBuffer = await page.screenshot();
+
+        // // Respond with the image
+        // res.writeHead(200, {
+        //     'Content-Type': 'image/png',
+        //     'Content-Length': screenshotBuffer.length
+        // });
+        // res.end(screenshotBuffer);
+
+        // await browser.close();
     })()
         .catch(err => res.sendStatus(500));
 });
