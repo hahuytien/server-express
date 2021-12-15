@@ -48,10 +48,11 @@ app.get('/', function (req, res) {
                 status: 200,
                 message: "Get data has successfully",
             });
+
+            await page.close()
         });
     })()
-    .catch(err => res.sendStatus(500))
-    .finally(async () => await page.close());
+    .catch(err => res.sendStatus(500));
 });
 
 
