@@ -45,7 +45,7 @@ app.get('/', function (req, res) {
             // Sending the Digimon names to Postman
             // res.send(digimonNames);
         
-            await page.close()
+            // await page.close()
 
             res.json({
                 status: 200,
