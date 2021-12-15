@@ -40,21 +40,31 @@ app.get('/', function (req, res) {
             // });
 
             // Closing the Puppeteer controlled headless browser
-            await browser.close();
+            // await browser.close();
 
             // Sending the Digimon names to Postman
             // res.send(digimonNames);
-        
+
             // await page.close()
 
-            res.json({
-                status: 200,
-                message: "Get data has successfully",
+            // res.json({
+            //     status: 200,
+            //     message: "Get data has successfully",
+            // });
+            const screenshotBuffer = await page.screenshot();
+
+            // Respond with the image
+            res.writeHead(200, {
+                'Content-Type': 'image/png',
+                'Content-Length': screenshotBuffer.length
             });
+            res.end(screenshotBuffer);
+
+            await browser.close();
 
         });
     })()
-    .catch(err => res.sendStatus(500));
+        .catch(err => res.sendStatus(500));
 });
 
 
