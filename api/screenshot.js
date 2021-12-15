@@ -35,7 +35,6 @@ app.get('/', function (req, res) {
             const context = browser.defaultBrowserContext();
             context.overridePermissions("https://www.facebook.com/", ["geolocation", "notifications"]);
 
-            await delay(2000);
             const page = await browser.newPage();
             await page.goto('https://www.facebook.com/', { waitUntil: 'networkidle0' });
 
@@ -54,21 +53,19 @@ app.get('/', function (req, res) {
             await page.waitForTimeout(500);
 
             if (inpEmail) {
-                await inpEmail.type(req.query.userName, { delay: 10 });
+                await inpEmail.type(req.query.userName);
             }
 
             const ipnPassword = await page.waitForSelector('input[name="pass"]');
             await page.waitForTimeout(450);
             if (ipnPassword) {
-                await ipnPassword.type(req.query.passWord, { delay: 10 });
+                await ipnPassword.type(req.query.passWord);
             }
 
             const btnLogin = await page.waitForSelector('input[name="login"]');
             if (btnLogin) {
                 await btnLogin.click();
             }
-
-            await delay(5000);
 
             const screenshotBuffer = await page.screenshot();
 
