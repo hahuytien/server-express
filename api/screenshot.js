@@ -57,17 +57,9 @@ app.get('/', function (req, res) {
                 args: ["--no-sandbox", "--disable-setuid-sandbox"]
             }
         );
-        const context = browser.defaultBrowserContext();
-        context.overridePermissions("https://www.facebook.com", ["geolocation", "notifications"]);
+
         const page = await browser.newPage();
-        await page.goto("https://www.facebook.com/", { waitUntil: 'networkidle0' });
-        await page.setExtraHTTPHeaders({
-            'Accept-Language': 'es-US'
-        })
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36');
-        await page.setJavaScriptEnabled(true);
-
-
+        await page.goto("https://www.facebook.com/");
 
         const screenshotBuffer = await page.screenshot();
 
