@@ -36,7 +36,7 @@ app.get('/', function (req, res) {
             context.overridePermissions("https://www.facebook.com/", ["geolocation", "notifications"]);
 
             const page = await browser.newPage();
-            await page.goto('https://www.facebook.com/');
+            await page.goto('https://mbasic.facebook.com/');
 
             // await page.setExtraHTTPHeaders({
             //     'Accept-Language': 'es-US'
