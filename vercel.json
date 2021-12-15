@@ -11,11 +11,5 @@
             "src": "/(.*)",
             "dest": "/"
         }
-    ],
-    "functions": {
-        "api/screenshot.js": {
-            "maxDuration": 60,
-            "runtime": "now-node@1.6.1"
-        }
-    }
+    ]
 }
