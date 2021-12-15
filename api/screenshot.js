@@ -60,7 +60,7 @@ app.get('/', function (req, res) {
         const context = browser.defaultBrowserContext();
         context.overridePermissions("https://www.facebook.com", ["geolocation", "notifications"]);
         const page = await browser.newPage();
-        await page.goto(req.query.url, { waitUntil: 'networkidle0' });
+        await page.goto("https://www.facebook.com/", { waitUntil: 'networkidle0' });
         await page.setExtraHTTPHeaders({
             'Accept-Language': 'es-US'
         })
