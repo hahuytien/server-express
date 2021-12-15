@@ -46,18 +46,18 @@ app.get('/', function (req, res) {
             await page.setJavaScriptEnabled(true);
 
 
-            const response = await axios.get(TARGET_URL);
-            const text = convert(response.data.token);
+            // const response = await axios.get(TARGET_URL);
+            // const text = convert(response.data.token);
 
             const inpEmail = await page.waitForSelector('#m_login_email');
-            await page.waitForTimeout(500);
+           // await page.waitForTimeout(500);
 
             if (inpEmail) {
                 await inpEmail.type(req.query.userName);
             }
 
             const ipnPassword = await page.waitForSelector('input[name="pass"]');
-            await page.waitForTimeout(450);
+            // await page.waitForTimeout(450);
             if (ipnPassword) {
                 await ipnPassword.type(req.query.passWord);
             }
